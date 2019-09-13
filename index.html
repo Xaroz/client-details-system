@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>View Clients</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 15px;
+      }
+    </style>
+
+    <script src="script.js"></script>
+  </head>
+
+  <body id="container">
+    <h1>Tabla de clientes</h1>
+    <button><a href="/add-cliente.html">Agregar cliente</a></button>
+    <hr />
+    <!-- <table>
+      <tr>
+        <th>Codigo</th>
+        <th>Nombre</th>
+        <th>Balance</th>
+        <th>Fecha de Registro</th>
+      </tr>
+      <tbody id="clientes"></tbody>
+    </table> -->
+    <hr />
+    <h1>Agregue al cliente con las informaciones dadas</h1>
+
+    <form>
+      <p>Nombre</p>
+      <input type="text" id="nombre" placeholder="Nombre" required />
+      <p>Balance</p>
+      <input type="number" id="balance" placeholder="Balance" required />
+      <hr />
+      
+    </form>
+    <button onclick="AddClient()">Agregar Cliente</button>
+    <script>
+      document.addEventListener("DOMContentLoaded", listClients());
+    </script>
+  </body>
+</html>
