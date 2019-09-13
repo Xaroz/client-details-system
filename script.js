@@ -1,24 +1,24 @@
-let clientes = [
-  {
-    codigo: 1,
-    nombre: "Jhon",
-    balance: 123.0,
-    fechaRegistro: "15/09/25"
-  },
-  {
-    codigo: 2,
-    nombre: "Pedro",
-    balance: 200,
-    fechaRegistro: "15/08/2018"
-  },
-  {
-    codigo: 3,
-    nombre: "Pedro",
-    balance: 200,
-    fechaRegistro: "15/08/2018"
-  }
-];
-
+// let clientes = [
+//   {
+//     codigo: 1,
+//     nombre: "Jhon",
+//     balance: 123.0,
+//     fechaRegistro: "15/09/25"
+//   },
+//   {
+//     codigo: 2,
+//     nombre: "Pedro",
+//     balance: 200,
+//     fechaRegistro: "15/08/2018"
+//   },
+//   {
+//     codigo: 3,
+//     nombre: "Pedro",
+//     balance: 200,
+//     fechaRegistro: "15/08/2018"
+//   }
+// ];
+let clientes = [];
 
 
 function listClients() {
@@ -33,6 +33,8 @@ function listClients() {
     let balance = document.createElement("td");
     let fechaRegistro = document.createElement("td");
 
+
+
     codigo.textContent = clientes[i].codigo;
     nombre.textContent = clientes[i].nombre;
     balance.textContent = clientes[i].balance;
@@ -42,6 +44,16 @@ function listClients() {
     row.appendChild(nombre);
     row.appendChild(balance);
     row.appendChild(fechaRegistro);
+
+    let btnedit = document.createElement("button");
+    btnedit.textContent = "editar";
+    let btndel = document.createElement("button");
+    btndel.textContent = "eliminar";
+
+    btnedit.setAttribute("class", "inputs");
+    btndel.setAttribute("class", "inputs");
+    row.appendChild(btnedit);
+    row.appendChild(btndel);
   }
 }
 
@@ -58,16 +70,21 @@ function CreateTable() {
   let titulo2 = document.createElement("th");
   let titulo3 = document.createElement("th");
   let titulo4 = document.createElement("th");
+  let titulo5 = document.createElement("th");
+
 
   titulo1.textContent = "Codigo";
   titulo2.textContent = "Nombre";
   titulo3.textContent = "Balance";
   titulo4.textContent = "Fecha de Registro";
+  titulo5.textContent = "Opciones";
 
   row.appendChild(titulo1);
   row.appendChild(titulo2);
   row.appendChild(titulo3);
   row.appendChild(titulo4);
+  row.appendChild(titulo5);
+
 
   let table_body = document.createElement("tbody");
   table_body.setAttribute("id", "clientes");
@@ -77,16 +94,19 @@ function CreateTable() {
 
 function AddClient() {
   let codigo = clientes.length + 1;
-  let nombre = document.getElementById("nombre").value;
-  let balance = document.getElementById("balance").value;
-  let fechaRegistro = "15/25/33";
+  let nombre = document.getElementById("nombre");
+  let balance = document.getElementById("balance");
+  let fechaRegistro =  new Date();
+  let curFecha = fechaRegistro.toLocaleString();
 
   let cliente = {
     codigo: codigo,
-    nombre: nombre,
-    balance: balance,
-    fechaRegistro: fechaRegistro
+    nombre: nombre.value,
+    balance: balance.value,
+    fechaRegistro: curFecha
   };
+  nombre.value = "";
+  balance.value = "";
 
   clientes.push(cliente);
   var element = document.getElementById("table");
