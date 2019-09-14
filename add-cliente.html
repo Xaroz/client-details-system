@@ -3,12 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <title>View Clients</title>
+    <link rel="stylesheet" href="styles.css" />
     <script src="script.js"></script>
-    <script>
-      
-    </script>
+    <script></script>
   </head>
   <body>
-      
+    <h1>Agregue al cliente con las informaciones dadas</h1>
+    <form>
+      <p>Nombre</p>
+      <input type="text" id="nombre" placeholder="Nombre" required />
+      <p>Balance</p>
+      <input type="number" id="balance" placeholder="Balance" required />
+    </form>
+    <hr />
+    <button onclick="AddClient()">Agregar Cliente</button>
+    <button><a href="index.html">Volver a Clientes</a></button>
   </body>
 </html>

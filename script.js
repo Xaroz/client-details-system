@@ -1,26 +1,9 @@
-let clientes = [
-  {
-    codigo: 1,
-    nombre: "Jhon",
-    balance: 123.0,
-    fechaRegistro: "15/09/25"
-  },
-  {
-    codigo: 2,
-    nombre: "Pedro",
-    balance: 200,
-    fechaRegistro: "15/08/2018"
-  },
-  {
-    codigo: 3,
-    nombre: "Pedro",
-    balance: 200,
-    fechaRegistro: "15/08/2018"
-  }
-];
-// let clientes = [];
 
-let number = '';
+let clientes = localStorage.getItem('clientes') ? JSON.parse(localStorage.getItem('clientes')) : [];
+localStorage.setItem('clientes', JSON.stringify(clientes));
+const data = JSON.parse(localStorage.getItem('clientes'));
+
+let number = "";
 
 function listClients() {
   CreateTable();
@@ -50,7 +33,7 @@ function listClients() {
     btndel.textContent = "eliminar";
     let btndet = document.createElement("button");
     btndet.textContent = "ver";
-  
+
     btnedit.setAttribute("class", "inputs");
     btndel.setAttribute("class", "inputs");
     btndel.setAttribute("class", "inputs");
@@ -60,9 +43,14 @@ function listClients() {
     row.appendChild(btnedit);
     row.appendChild(btndel);
     row.appendChild(btndet);
+
     btnedit.addEventListener("click", function() {
       number = btnedit.id;
-      EditFunction(btnedit);
+      EditFunction();
+    });
+    btndel.addEventListener("click", function() {
+      number = btnedit.id;
+      DeleteClient();
     });
   }
 }
@@ -117,22 +105,12 @@ function AddClient() {
   balance.value = "";
 
   clientes.push(cliente);
-  var element = document.getElementById("table");
-  element.parentNode.removeChild(element);
-  listClients();
+  alert("Cliente agregado!");
+  localStorage.setItem('clientes', JSON.stringify(clientes));
 }
 
 function EditFunction() {
-  let edtBlock = document.getElementsByClassName("editarBlock");
-  let edtIn = document.getElementsByClassName("editarIn");
-  
-  for (var i = 0; i < edtBlock.length; i++){
-    edtBlock[i].style.display = "block";
-  }
-  for (var i = 0; i < edtIn.length; i++){
-    edtIn[i].style.display = "inline";
-  }
-
+  ShowEdit();
   let inputNombre = document.getElementById("edtname");
   let inputBalance = document.getElementById("edtbal");
 
@@ -141,10 +119,9 @@ function EditFunction() {
 
   inputNombre.value = nombre;
   inputBalance.value = balance;
-
 }
 
-function SaveEdit(){
+function SaveEdit() {
   let inputNombre = document.getElementById("edtname");
   let inputBalance = document.getElementById("edtbal");
 
@@ -153,30 +130,46 @@ function SaveEdit(){
 
   clientes[number].nombre = nombre;
   clientes[number].balance = balance;
+  localStorage.setItem('clientes', JSON.stringify(clientes));
 
-  var element = document.getElementById("table");
-  element.parentNode.removeChild(element);
+  DeleteTable();
   listClients();
+  HideEdit();
+}
 
+function DeleteClient() {
+  HideEdit();
+  clientes.splice(number,1);
+  localStorage.setItem('clientes', JSON.stringify(clientes));
+  DeleteTable();
+  listClients();
+}
+
+function ShowEdit() {
   let edtBlock = document.getElementsByClassName("editarBlock");
   let edtIn = document.getElementsByClassName("editarIn");
-  
-  for (var i = 0; i < edtBlock.length; i++){
+
+  for (var i = 0; i < edtBlock.length; i++) {
+    edtBlock[i].style.display = "block";
+  }
+  for (var i = 0; i < edtIn.length; i++) {
+    edtIn[i].style.display = "inline";
+  }
+}
+
+function HideEdit() {
+  let edtBlock = document.getElementsByClassName("editarBlock");
+  let edtIn = document.getElementsByClassName("editarIn");
+
+  for (var i = 0; i < edtBlock.length; i++) {
     edtBlock[i].style.display = "none";
   }
-  for (var i = 0; i < edtIn.length; i++){
+  for (var i = 0; i < edtIn.length; i++) {
     edtIn[i].style.display = "none";
   }
 }
 
-function CancelEdit(){
-  let edtBlock = document.getElementsByClassName("editarBlock");
-  let edtIn = document.getElementsByClassName("editarIn");
-  
-  for (var i = 0; i < edtBlock.length; i++){
-    edtBlock[i].style.display = "none";
-  }
-  for (var i = 0; i < edtIn.length; i++){
-    edtIn[i].style.display = "none";
-  }
+function DeleteTable(){
+  var element = document.getElementById("table");
+  element.parentNode.removeChild(element);
 }

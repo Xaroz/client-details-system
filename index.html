@@ -22,35 +22,20 @@
 
   <body id="container">
     <h1>Tabla de clientes</h1>
-    <button><a href="/add-cliente.html">Agregar cliente</a></button>
+    <button><a href="add-cliente.html">Agregar cliente</a></button>
     <hr />
-    <!-- <table>
-      <tr>
-        <th>Codigo</th>
-        <th>Nombre</th>
-        <th>Balance</th>
-        <th>Fecha de Registro</th>
-      </tr>
-      <tbody id="clientes"></tbody>
-    </table> -->
-    <!-- <h1>Agregue al cliente con las informaciones dadas</h1> -->
+    
 
     <form>
-      <!-- <p>Nombre</p>
-      <input type="text" id="nombre" placeholder="Nombre" required />
-      <p>Balance</p>
-      <input type="number" id="balance" placeholder="Balance" required /> -->
-      
       <h2 class="editarBlock">Editar cliente</h2>
       <p class="editarBlock">Nombre</p>
       <input class="editarIn" type="text" id="edtname" placeholder="Nombre" required />
       <p class="editarBlock">Balance</p>
       <input class="editarIn" type="number" id="edtbal" placeholder="Balance" required /> 
     </form>
-    <!-- <button onclick="AddClient()">Agregar Cliente</button> -->
 
     <button class="editarIn" onclick="SaveEdit()">Guardar</button>
-    <button class="editarIn" onclick="CancelEdit()">Cancelar</button>
+    <button class="editarIn" onclick="HideEdit()">Cancelar</button>
     <hr class="editarBlock">
     <script>
       document.addEventListener("DOMContentLoaded", listClients());

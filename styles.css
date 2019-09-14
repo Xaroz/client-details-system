@@ -1,9 +1,9 @@
-.inputs{
-    margin-top: 12px;
-    
+.inputs {
+  margin-top: 12px;
 }
-.editarBlock, .editarIn{
-    display: none;
+.editarBlock,
+.editarIn {
+  display: none;
 }
 /* .editarBlock{
     display: block;
@@ -11,3 +11,12 @@
 .editarIn{
     display: inline;
 } */
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
