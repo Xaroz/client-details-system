@@ -1,5 +1,6 @@
 .inputs {
   margin-top: 12px;
+  cursor: pointer;
 }
 .editarBlock,
 .editarIn {
@@ -19,4 +20,8 @@ a:visited {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+.detalle{
+    margin-left: auto;
+    margin-bottom: 10px;
 }

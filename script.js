@@ -1,9 +1,9 @@
 
 let clientes = localStorage.getItem('clientes') ? JSON.parse(localStorage.getItem('clientes')) : [];
 localStorage.setItem('clientes', JSON.stringify(clientes));
-const data = JSON.parse(localStorage.getItem('clientes'));
 
-let number = "";
+let number = localStorage.getItem('number') ? JSON.parse(localStorage.getItem('number')) : "";
+localStorage.setItem('number', JSON.stringify(number));
 
 function listClients() {
   CreateTable();
@@ -32,7 +32,6 @@ function listClients() {
     let btndel = document.createElement("button");
     btndel.textContent = "eliminar";
     let btndet = document.createElement("button");
-    btndet.textContent = "ver";
 
     btnedit.setAttribute("class", "inputs");
     btndel.setAttribute("class", "inputs");
@@ -44,6 +43,11 @@ function listClients() {
     row.appendChild(btndel);
     row.appendChild(btndet);
 
+    let link_detail = document.createElement("a");
+    link_detail.setAttribute("href", "client-details.html");
+    link_detail.textContent = "ver";
+    btndet.appendChild(link_detail);
+
     btnedit.addEventListener("click", function() {
       number = btnedit.id;
       EditFunction();
@@ -52,6 +56,10 @@ function listClients() {
       number = btnedit.id;
       DeleteClient();
     });
+    link_detail.addEventListener("click",function(e){
+      number = btnedit.id;
+      localStorage.setItem('number', JSON.stringify(number));
+    });  
   }
 }
 
@@ -89,7 +97,15 @@ function CreateTable() {
 }
 
 function AddClient() {
-  let codigo = clientes.length + 1;
+  let codigo;
+  let temp;
+  if (clientes.length == 0){
+    codigo = 1;
+  }else{
+    tmp = parseInt(clientes[clientes.length - 1].codigo);
+    codigo = tmp + 1;
+  }
+  
   let nombre = document.getElementById("nombre");
   let balance = document.getElementById("balance");
   let fechaRegistro = new Date();
@@ -170,6 +186,19 @@ function HideEdit() {
 }
 
 function DeleteTable(){
-  var element = document.getElementById("table");
+  let element = document.getElementById("table");
   element.parentNode.removeChild(element);
+}
+
+function ViewClient(){
+  console.log(number);
+  let codigo = document.getElementById("codigo-detalle");
+  let nombre = document.getElementById("nombre-detalle");
+  let balance = document.getElementById("balance-detalle");
+  let fecha = document.getElementById("fecha-detalle");
+
+  codigo.value = clientes[number].codigo;
+  nombre.value = clientes[number].nombre;
+  balance.value = clientes[number].balance;
+  fecha.value = clientes[number].fechaRegistro;
 }
