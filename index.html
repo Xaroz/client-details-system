@@ -33,18 +33,25 @@
       </tr>
       <tbody id="clientes"></tbody>
     </table> -->
-    <hr />
-    <h1>Agregue al cliente con las informaciones dadas</h1>
+    <!-- <h1>Agregue al cliente con las informaciones dadas</h1> -->
 
     <form>
-      <p>Nombre</p>
+      <!-- <p>Nombre</p>
       <input type="text" id="nombre" placeholder="Nombre" required />
       <p>Balance</p>
-      <input type="number" id="balance" placeholder="Balance" required />
-      <hr />
+      <input type="number" id="balance" placeholder="Balance" required /> -->
       
+      <h2 class="editarBlock">Editar cliente</h2>
+      <p class="editarBlock">Nombre</p>
+      <input class="editarIn" type="text" id="edtname" placeholder="Nombre" required />
+      <p class="editarBlock">Balance</p>
+      <input class="editarIn" type="number" id="edtbal" placeholder="Balance" required /> 
     </form>
-    <button onclick="AddClient()">Agregar Cliente</button>
+    <!-- <button onclick="AddClient()">Agregar Cliente</button> -->
+
+    <button class="editarIn">Guardar</button>
+    <button class="editarIn">Cancelar</button>
+    <hr class="editarBlock">
     <script>
       document.addEventListener("DOMContentLoaded", listClients());
     </script>

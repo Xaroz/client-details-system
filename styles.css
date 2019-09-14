@@ -1,3 +1,13 @@
 .inputs{
     margin-top: 12px;
+    
 }
+.editarBlock, .editarIn{
+    display: none;
+}
+/* .editarBlock{
+    display: block;
+}
+.editarIn{
+    display: inline;
+} */

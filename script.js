@@ -1,25 +1,24 @@
-// let clientes = [
-//   {
-//     codigo: 1,
-//     nombre: "Jhon",
-//     balance: 123.0,
-//     fechaRegistro: "15/09/25"
-//   },
-//   {
-//     codigo: 2,
-//     nombre: "Pedro",
-//     balance: 200,
-//     fechaRegistro: "15/08/2018"
-//   },
-//   {
-//     codigo: 3,
-//     nombre: "Pedro",
-//     balance: 200,
-//     fechaRegistro: "15/08/2018"
-//   }
-// ];
-let clientes = [];
-
+let clientes = [
+  {
+    codigo: 1,
+    nombre: "Jhon",
+    balance: 123.0,
+    fechaRegistro: "15/09/25"
+  },
+  {
+    codigo: 2,
+    nombre: "Pedro",
+    balance: 200,
+    fechaRegistro: "15/08/2018"
+  },
+  {
+    codigo: 3,
+    nombre: "Pedro",
+    balance: 200,
+    fechaRegistro: "15/08/2018"
+  }
+];
+// let clientes = [];
 
 function listClients() {
   CreateTable();
@@ -32,8 +31,6 @@ function listClients() {
     let nombre = document.createElement("td");
     let balance = document.createElement("td");
     let fechaRegistro = document.createElement("td");
-
-
 
     codigo.textContent = clientes[i].codigo;
     nombre.textContent = clientes[i].nombre;
@@ -49,11 +46,19 @@ function listClients() {
     btnedit.textContent = "editar";
     let btndel = document.createElement("button");
     btndel.textContent = "eliminar";
+    let btndet = document.createElement("button");
+    btndet.textContent = "ver";
+
+    btnedit.addEventListener("click", function() {
+      EditFunction(i);
+    });
 
     btnedit.setAttribute("class", "inputs");
     btndel.setAttribute("class", "inputs");
+    btndel.setAttribute("class", "inputs");
     row.appendChild(btnedit);
     row.appendChild(btndel);
+    row.appendChild(btndet);
   }
 }
 
@@ -72,7 +77,6 @@ function CreateTable() {
   let titulo4 = document.createElement("th");
   let titulo5 = document.createElement("th");
 
-
   titulo1.textContent = "Codigo";
   titulo2.textContent = "Nombre";
   titulo3.textContent = "Balance";
@@ -85,7 +89,6 @@ function CreateTable() {
   row.appendChild(titulo4);
   row.appendChild(titulo5);
 
-
   let table_body = document.createElement("tbody");
   table_body.setAttribute("id", "clientes");
 
@@ -96,7 +99,7 @@ function AddClient() {
   let codigo = clientes.length + 1;
   let nombre = document.getElementById("nombre");
   let balance = document.getElementById("balance");
-  let fechaRegistro =  new Date();
+  let fechaRegistro = new Date();
   let curFecha = fechaRegistro.toLocaleString();
 
   let cliente = {
@@ -112,4 +115,18 @@ function AddClient() {
   var element = document.getElementById("table");
   element.parentNode.removeChild(element);
   listClients();
+}
+
+function EditFunction(number) {
+  alert(number);
+  let edtBlock = document.getElementsByClassName("editarBlock");
+  let edtIn = document.getElementsByClassName("editarIn");
+  
+  for (var i = 0; i < edtBlock.length; i++){
+    edtBlock[i].style.display = "block";
+  }
+  for (var i = 0; i < edtIn.length; i++){
+    edtIn[i].style.display = "inline";
+  }
+
 }
