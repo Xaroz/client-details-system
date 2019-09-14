@@ -20,6 +20,8 @@ let clientes = [
 ];
 // let clientes = [];
 
+let number = '';
+
 function listClients() {
   CreateTable();
 
@@ -48,17 +50,20 @@ function listClients() {
     btndel.textContent = "eliminar";
     let btndet = document.createElement("button");
     btndet.textContent = "ver";
-
-    btnedit.addEventListener("click", function() {
-      EditFunction(i);
-    });
-
+  
     btnedit.setAttribute("class", "inputs");
     btndel.setAttribute("class", "inputs");
     btndel.setAttribute("class", "inputs");
+
+    btnedit.setAttribute("id", i);
+
     row.appendChild(btnedit);
     row.appendChild(btndel);
     row.appendChild(btndet);
+    btnedit.addEventListener("click", function() {
+      number = btnedit.id;
+      EditFunction(btnedit);
+    });
   }
 }
 
@@ -117,8 +122,7 @@ function AddClient() {
   listClients();
 }
 
-function EditFunction(number) {
-  alert(number);
+function EditFunction() {
   let edtBlock = document.getElementsByClassName("editarBlock");
   let edtIn = document.getElementsByClassName("editarIn");
   
@@ -129,4 +133,50 @@ function EditFunction(number) {
     edtIn[i].style.display = "inline";
   }
 
+  let inputNombre = document.getElementById("edtname");
+  let inputBalance = document.getElementById("edtbal");
+
+  let nombre = clientes[number].nombre;
+  let balance = clientes[number].balance;
+
+  inputNombre.value = nombre;
+  inputBalance.value = balance;
+
+}
+
+function SaveEdit(){
+  let inputNombre = document.getElementById("edtname");
+  let inputBalance = document.getElementById("edtbal");
+
+  let nombre = inputNombre.value;
+  let balance = inputBalance.value;
+
+  clientes[number].nombre = nombre;
+  clientes[number].balance = balance;
+
+  var element = document.getElementById("table");
+  element.parentNode.removeChild(element);
+  listClients();
+
+  let edtBlock = document.getElementsByClassName("editarBlock");
+  let edtIn = document.getElementsByClassName("editarIn");
+  
+  for (var i = 0; i < edtBlock.length; i++){
+    edtBlock[i].style.display = "none";
+  }
+  for (var i = 0; i < edtIn.length; i++){
+    edtIn[i].style.display = "none";
+  }
+}
+
+function CancelEdit(){
+  let edtBlock = document.getElementsByClassName("editarBlock");
+  let edtIn = document.getElementsByClassName("editarIn");
+  
+  for (var i = 0; i < edtBlock.length; i++){
+    edtBlock[i].style.display = "none";
+  }
+  for (var i = 0; i < edtIn.length; i++){
+    edtIn[i].style.display = "none";
+  }
 }
