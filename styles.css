@@ -1,17 +1,15 @@
+.page {
+  background-color: #eaedf0;
+}
+
 .inputs {
-  margin-top: 12px;
   cursor: pointer;
 }
 .editarBlock,
 .editarIn {
   display: none;
 }
-/* .editarBlock{
-    display: block;
-}
-.editarIn{
-    display: inline;
-} */
+
 a {
   text-decoration: none;
 }
@@ -21,7 +19,44 @@ a:visited {
   text-decoration: none;
   cursor: pointer;
 }
-.detalle{
-    margin-left: auto;
-    margin-bottom: 10px;
+.detalle {
+  margin-left: auto;
+  margin-bottom: 10px;
+}
+.form-container {
+  border: 1px black solid;
+  padding: 15px;
+}
+.btn {
+  background-color: #76aeed;
+  height: 40px;
+  border-radius: 3px;
+  border: 1px black solid;
+  font-size: 14px;
+}
+.input-style {
+  background-color: #f6f7f8;
+  border: 1px solid black;
+  height: 30px;
+  font-weight: bold;
+  border-radius: 3px;
+  font-size: 14px;
+}
+.input-style:focus {
+  border: 2px solid black;
+  border-radius: 3px;
+}
+.dynamic-inputs {
+  font-size: 14px;
+  background-color: #76aeed;
+  border: 1px solid black;
+  border-radius: 3px;
+  height: 25px;
+  width: 70px;
+  margin-left: 1px;
+  cursor: pointer;
+}
+h1,
+h2 {
+  color: #5d6063;
 }

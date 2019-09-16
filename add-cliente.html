@@ -7,16 +7,29 @@
     <script src="script.js"></script>
     <script></script>
   </head>
-  <body>
+  <body class="page">
     <h1>Agregue al cliente con las informaciones dadas</h1>
+    <hr />
     <form>
-      <p>Nombre</p>
-      <input type="text" id="nombre" placeholder="Nombre" required />
+      <p>Number</p>
+      <input
+        class="input-style"
+        type="text"
+        id="nombre"
+        placeholder="Nombre"
+        required
+      />
       <p>Balance</p>
-      <input type="number" id="balance" placeholder="Balance" required />
+      <input
+        class="input-style"
+        type="number"
+        id="balance"
+        placeholder="Balance"
+        required
+      />
     </form>
     <hr />
-    <button class="inputs" onclick="AddClient()">Agregar Cliente</button>
-    <button><a href="index.html">Volver a Clientes</a></button>
+    <button class="inputs btn" onclick="AddClient()">Agregar Cliente</button>
+    <button class="btn"><a href="index.html">Volver a Clientes</a></button>
   </body>
 </html>
